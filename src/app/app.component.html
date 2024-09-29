@@ -1,0 +1,20 @@
+<app-particles></app-particles>
+
+<main class="py-16 px-2 space-y-8 max-w-[640px] m-auto z-20 relative">
+  <section><app-hero /></section>
+
+  <section class="space-y-4">
+    @for(social of socialMap | keyvalue; track social){
+    <div>
+      <app-connect [social]="social.value" />
+    </div>
+    }
+  </section>
+</main>
+@if(isDevMode){
+<!-- Dev -->
+<div class="fixed top-0 right-0 z-20">
+  <app-toggle-theme-button></app-toggle-theme-button>
+</div>
+
+}
