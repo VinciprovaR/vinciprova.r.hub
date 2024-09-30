@@ -1,12 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, isDevMode, OnInit } from '@angular/core';
-import { HeroComponent } from './components/hero/hero.component';
+import { Component, inject, isDevMode } from '@angular/core';
+import { SOCIAL_MAP, SocialMap } from './app.config';
 import { ConnectComponent } from './components/connect/connect.component';
-import { SocialMap, SOCIAL_MAP } from './app.config';
-import { ToggleThemeService } from './services/toggle-theme.service';
-import { ToggleThemeButtonComponent } from './components/toggle-theme-button/toggle-theme-button.component';
-import { ParticlesComponent } from './components/particles/particles.component';
 import { DownloadResumeComponent } from './components/download-resume/download-resume.component';
+import { HeaderComponent } from './components/header/header.component';
+import { HeroComponent } from './components/hero/hero.component';
+import { ParticlesComponent } from './components/particles/particles.component';
+import { ToggleThemeService } from './services/toggle-theme.service';
 
 @Component({
   selector: 'app-root',
@@ -15,9 +15,9 @@ import { DownloadResumeComponent } from './components/download-resume/download-r
     CommonModule,
     HeroComponent,
     ConnectComponent,
-    ToggleThemeButtonComponent,
     ParticlesComponent,
     DownloadResumeComponent,
+    HeaderComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

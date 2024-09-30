@@ -1,7 +1,8 @@
 import { Component, effect, inject, OnInit } from '@angular/core';
 import { tsParticles } from '@tsparticles/engine';
-import { loadAll } from '@tsparticles/all';
+import { loadTrianglesPreset } from '@tsparticles/preset-triangles';
 import { ToggleThemeService } from '../../services/toggle-theme.service';
+import { PageEventService } from '../../services/page-event.service';
 
 @Component({
   selector: 'app-particles',
@@ -12,12 +13,14 @@ import { ToggleThemeService } from '../../services/toggle-theme.service';
 })
 export class ParticlesComponent implements OnInit {
   private readonly toggleThemeService = inject(ToggleThemeService);
-  particlesColorForDarkTheme = '#ff6f61';
+  private readonly pageEventService = inject(PageEventService);
+  particlesColorForDarkTheme = '#962828';
   particlesColorForLightTheme = '#0a2540';
 
   constructor() {
     effect(() => {
       this.toggleThemeService.$isDarkTheme();
+      this.pageEventService.$windowInnerWidth();
       this.load();
     });
   }
@@ -31,58 +34,40 @@ export class ParticlesComponent implements OnInit {
       ? this.particlesColorForDarkTheme
       : this.particlesColorForLightTheme;
 
-    await loadAll(tsParticles);
-
-    await tsParticles.addPreset('lightdark', {
-      fullScreen: {
-        enable: false,
-      },
-      particles: {
-        links: {
-          enable: true,
-        },
-        move: {
-          enable: true,
-          speed: { min: 1, max: 2 },
-        },
-        number: {
-          value: 30,
-        },
-        opacity: {
-          value: { min: 0.2, max: 0.8 },
-        },
-        shape: {
-          type: ['circle', 'square', 'triangle', 'polygon'],
-          options: {
-            polygon: [
-              {
-                sides: 5,
-              },
-              {
-                sides: 6,
-              },
-              {
-                sides: 8,
-              },
-            ],
-          },
-        },
-        size: {
-          value: { min: 1, max: 3 },
-        },
-      },
-    });
+    await loadTrianglesPreset(tsParticles);
 
     await tsParticles.load({
       id: 'particles',
       options: {
-        preset: 'lightdark',
+        preset: 'triangles',
+        fpsLimit: 60,
+        background: {
+          color: {
+            value: 'none',
+          },
+        },
+        fullScreen: {
+          enable: false,
+        },
         particles: {
           color: {
             value: themeParticle,
           },
           links: {
             color: themeParticle,
+          },
+          move: {
+            enable: true,
+            speed: { min: 1, max: 2 },
+          },
+          number: {
+            value: this.pageEventService.$windowInnerWidth() / 25,
+          },
+          opacity: {
+            value: { min: 0.2, max: 0.8 },
+          },
+          size: {
+            value: { min: 1, max: 2 },
           },
         },
       },

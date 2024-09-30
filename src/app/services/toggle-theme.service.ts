@@ -6,6 +6,8 @@ import {
   RendererFactory2,
   signal,
 } from '@angular/core';
+import { WebStorageService } from './web-storage.service';
+import { THEME_STORAGE_KEY } from '../app.config';
 
 export interface Themes {
   [key: string]: { key: string; icon: string; class: string };
@@ -17,6 +19,8 @@ export interface Themes {
 export class ToggleThemeService {
   private readonly document = inject(DOCUMENT);
   private readonly rendererFactory = inject(RendererFactory2);
+  private readonly webStorageService = inject(WebStorageService);
+  private readonly themeStorageKey = inject(THEME_STORAGE_KEY);
 
   private readonly themes: Themes = {
     dark: { key: 'dark', icon: 'dark_mode', class: 'dark' },
@@ -32,10 +36,19 @@ export class ToggleThemeService {
   }
 
   initTheme() {
-    this.$isDarkTheme.set(
-      window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches
-    );
+    if (
+      this.webStorageService.getItem(this.themeStorageKey) != undefined ||
+      this.webStorageService.getItem(this.themeStorageKey) != null
+    ) {
+      this.$isDarkTheme.set(
+        'true' === this.webStorageService.getItem(this.themeStorageKey)
+      );
+    } else {
+      this.$isDarkTheme.set(
+        window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+      );
+    }
     this.setTheme();
   }
 
@@ -50,6 +63,11 @@ export class ToggleThemeService {
     } else {
       this.removeDarkTheme();
     }
+
+    this.webStorageService.saveitem({
+      key: this.themeStorageKey,
+      value: this.$isDarkTheme().toString(),
+    });
   }
 
   private setDarkTheme() {

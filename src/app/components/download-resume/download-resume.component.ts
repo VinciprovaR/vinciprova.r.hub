@@ -5,8 +5,5 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './download-resume.component.html',
-  styleUrl: './download-resume.component.css'
 })
-export class DownloadResumeComponent {
-
-}
+export class DownloadResumeComponent {}

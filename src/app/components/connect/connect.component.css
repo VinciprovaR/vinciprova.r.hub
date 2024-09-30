@@ -1,13 +1,12 @@
 .grd {
   background: linear-gradient(
     to bottom,
-    var(--theme-color-2-opacity) 25%,
-    rgba(255, 255, 255, 0)
+    var(--theme-color-3) 25%,
+    var(--theme-color-1)
   );
 }
 
 .grd:hover {
-  /* box-shadow: 0 0 5px 2px var(--border-color-hover) inset; */
   box-shadow: 0 0 10px 0 var(--border-color-hover) inset,
     0 0 10px 2px var(--border-color-hover);
 }

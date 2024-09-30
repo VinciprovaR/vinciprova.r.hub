@@ -28,6 +28,9 @@ const socialMap: SocialMap = {
 };
 
 export const SOCIAL_MAP = new InjectionToken<SocialMap>('SOCIAL_MAP');
+export const THEME_STORAGE_KEY = new InjectionToken<string>(
+  'THEME_STORAGE_KEY'
+);
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -35,5 +38,6 @@ export const appConfig: ApplicationConfig = {
       provide: SOCIAL_MAP,
       useValue: socialMap,
     },
+    { provide: THEME_STORAGE_KEY, useValue: 'darkTheme' },
   ],
 };

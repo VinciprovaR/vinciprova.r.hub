@@ -1,15 +1,33 @@
 <div class="text-center space-y-4">
-  <div>
-    <img
-      class="mx-auto w-24 h-24 rounded-full border-4 border-gray-200 shadow-md"
-      src="assets/images/avatar.jpg"
-      alt="Avatar Image"
-    />
+  <div
+    class="mx-auto w-28 h-28 rounded-full border-4 border-[var(--border-color-hover)] shadow-md"
+  >
+    <a href="#popup">
+      <img
+        class="rounded-full"
+        src="assets/images/avatar.jpg"
+        alt="Avatar Image"
+      />
+    </a>
   </div>
+
   <div class="space-y-2">
     <h1 class="text-2xl 1024:text-3xl font-semibold">Riccardo Vinciprova</h1>
-    <p class="text-sm 1024:text-md text-[var(--text-color-sub)]">
+    <p class="text-sm 1024:text-lg text-[var(--text-color-sub)]">
       Creative Mind exploring code, games and life. Connect below.
     </p>
+  </div>
+</div>
+<div class="overlay" id="popup" #popup>
+  <div class="popup">
+    <div class="popup-photo">
+      <a href="assets/images/avatar.jpg" target="_blank">
+        <img src="assets/images/avatar.jpg" alt="Profile Picture" />
+      </a>
+    </div>
+    <div class="popup-quote">
+      "Knowledge rests not upon truth alone, but upon error also."
+    </div>
+    <a class="popup-close" onclick="history.back()">×</a>
   </div>
 </div>

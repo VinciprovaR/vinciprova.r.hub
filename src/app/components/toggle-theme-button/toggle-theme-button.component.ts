@@ -2,12 +2,11 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
   ElementRef,
   inject,
   ViewChild,
 } from '@angular/core';
-import { fromEvent, Subject, takeUntil } from 'rxjs';
+import { Subject } from 'rxjs';
 import { ToggleThemeService } from '../../services/toggle-theme.service';
 
 @Component({
@@ -24,25 +23,31 @@ export class ToggleThemeButtonComponent implements AfterViewInit {
 
   destroyed$ = new Subject();
 
-  @ViewChild('mode')
-  mode!: ElementRef;
-  @ViewChild('theme')
-  theme!: ElementRef;
+  @ViewChild('sun')
+  sun!: ElementRef;
+  @ViewChild('moon')
+  moon!: ElementRef;
 
-  constructor() {
-    inject(DestroyRef).onDestroy(() => {
-      this.destroyed$.next(true);
-      this.destroyed$.complete();
-    });
-  }
+  constructor() {}
 
   ngAfterViewInit(): void {
-    this.mode.nativeElement.checked = !this.$isDarkTheme();
+    this.setTheme();
+  }
 
-    fromEvent(this.mode.nativeElement, 'change')
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe(() => {
-        this.toggleThemeService.toggleTheme();
-      });
+  toggleTheme() {
+    this.toggleThemeService.toggleTheme();
+    this.setTheme();
+  }
+
+  setTheme() {
+    if (this.$isDarkTheme()) {
+      console.log('sono dark');
+      this.moon.nativeElement.classList = 'opacity-0 transition';
+      this.sun.nativeElement.classList = 'opacity-1 transition';
+    } else {
+      console.log('sono light');
+      this.moon.nativeElement.classList = 'translate-y opacity-1 transition';
+      this.sun.nativeElement.classList = 'translate-y opacity-0 transition';
+    }
   }
 }
