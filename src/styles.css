@@ -28,22 +28,28 @@ body.dark {
   --var-gradiend: 20%;
 }
 
-html,
-body {
+html {
+  background-color: black;
   font-family: "Exo 2", sans-serif;
-  @apply text-[14px] scroll-smooth box-border bg-no-repeat bg-cover text-[var(--text-color)] w-full min-h-[100dvh];
+}
+
+body {
+  opacity: 0;
+  @apply text-[14px] scroll-smooth box-border
+    bg-no-repeat bg-cover text-[var(--text-color)] w-full min-h-[100dvh];
   background: radial-gradient(
     ellipse at bottom,
     var(--theme-color-1) var(--var-gradiend),
     var(--theme-color-2)
   );
-  animation: 1s ease-out 0.3s 1 transitionAnimation;
+  animation: 1s ease-out 0.1s 1 transitionAnimation;
+  animation-fill-mode: forwards;
 }
 
 @keyframes transitionAnimation {
   0% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-30px);
   }
   100% {
     opacity: 1;
