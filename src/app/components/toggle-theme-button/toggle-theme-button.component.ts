@@ -41,11 +41,9 @@ export class ToggleThemeButtonComponent implements AfterViewInit {
 
   setTheme() {
     if (this.$isDarkTheme()) {
-      console.log('sono dark');
       this.moon.nativeElement.classList = 'opacity-0 transition';
       this.sun.nativeElement.classList = 'opacity-1 transition';
     } else {
-      console.log('sono light');
       this.moon.nativeElement.classList = 'translate-y opacity-1 transition';
       this.sun.nativeElement.classList = 'translate-y opacity-0 transition';
     }
