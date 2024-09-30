@@ -603,6 +603,10 @@ video {
   max-width: 640px;
 }
 
+.transform {
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
 .items-center {
   align-items: center;
 }
@@ -623,6 +627,12 @@ video {
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
 
+.space-y-10 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(2.5rem * var(--tw-space-y-reverse));
+}
+
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -633,12 +643,6 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
-}
-
-.space-y-8 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(2rem * var(--tw-space-y-reverse));
 }
 
 .rounded-full {
@@ -702,10 +706,32 @@ video {
   font-weight: 600;
 }
 
+.text-\[var\(--text-color\)\] {
+  color: var(--text-color);
+}
+
+.text-\[var\(--text-color-sub\)\] {
+  color: var(--text-color-sub);
+}
+
+.underline {
+  text-decoration-line: underline;
+}
+
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-150 {
+  transition-duration: 150ms;
 }
 
 :root {
@@ -717,9 +743,11 @@ body.light {
   --theme-color-1: rgb(246, 248, 250);
   --theme-color-2: rgb(255, 255, 255);
   --theme-color-2-opacity: rgba(255, 255, 255, 0.95);
-  --text-color: rgb(0, 27, 63);
+  --text-color: rgb(31, 41, 55);
+  --text-color-sub: rgb(95, 101, 113);
   --line-scroll: rgb(0, 27, 63);
   --border-color: rgb(206, 200, 200);
+  --border-color-hover: rgb(10, 37, 64);
   --bg-toggle-theme: rgb(208, 208, 208);
   --radial-gradient-1: rgb(224, 224, 224);
   --radial-gradient-2: rgb(255, 255, 255);
@@ -730,9 +758,10 @@ body.dark {
   --theme-color-1: rgb(0, 3, 25);
   --theme-color-2: rgb(28, 33, 75);
   --theme-color-2-opacity: rgba(28, 33, 75, 0.95);
-  --border-color: rgb(86, 90, 116);
-  --border-color-hover: rgb(216, 124, 48);
-  --text-color: rgb(255, 255, 255);
+  --border-color: rgb(87, 91, 117);
+  --border-color-hover: rgb(255, 111, 97);
+  --text-color: rgb(243, 244, 246);
+  --text-color-sub: rgb(156, 163, 175);
   --line-scroll: rgb(255, 255, 255);
   --bg-toggle-theme: rgb(47, 47, 47);
   --radial-gradient-1: rgb(24, 29, 65);
@@ -742,9 +771,9 @@ body.dark {
 
 html,
 body {
-  @apply: font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  -webkit-font-smoothing: antialiased;
+  /* @apply: font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+  font-family: "Exo 2", sans-serif;
   box-sizing: border-box;
   min-height: 100dvh;
   width: 100%;
@@ -759,6 +788,10 @@ body {
     var(--radial-gradient-1) var(--var-gradiend),
     var(--radial-gradient-2)
   );
+}
+
+.hover\:cursor-pointer:hover {
+  cursor: pointer;
 }
 
 .hover\:border-\[var\(--border-color-hover\)\]:hover {

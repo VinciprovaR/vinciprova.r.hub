@@ -6,6 +6,7 @@ import { SocialMap, SOCIAL_MAP } from './app.config';
 import { ToggleThemeService } from './services/toggle-theme.service';
 import { ToggleThemeButtonComponent } from './components/toggle-theme-button/toggle-theme-button.component';
 import { ParticlesComponent } from './components/particles/particles.component';
+import { DownloadResumeComponent } from './components/download-resume/download-resume.component';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { ParticlesComponent } from './components/particles/particles.component';
     ConnectComponent,
     ToggleThemeButtonComponent,
     ParticlesComponent,
+    DownloadResumeComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

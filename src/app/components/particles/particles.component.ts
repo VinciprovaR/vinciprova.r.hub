@@ -12,8 +12,8 @@ import { ToggleThemeService } from '../../services/toggle-theme.service';
 })
 export class ParticlesComponent implements OnInit {
   private readonly toggleThemeService = inject(ToggleThemeService);
-  darkParticles = '#E0FFFF';
-  lightParticles = '#191970';
+  particlesColorForDarkTheme = '#ff6f61';
+  particlesColorForLightTheme = '#0a2540';
 
   constructor() {
     effect(() => {
@@ -28,8 +28,8 @@ export class ParticlesComponent implements OnInit {
 
   async load() {
     const themeParticle = this.toggleThemeService.$isDarkTheme()
-      ? '#E0FFFF'
-      : '#191970';
+      ? this.particlesColorForDarkTheme
+      : this.particlesColorForLightTheme;
 
     await loadAll(tsParticles);
 

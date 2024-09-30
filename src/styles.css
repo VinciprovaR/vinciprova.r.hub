@@ -11,9 +11,11 @@ body.light {
   --theme-color-1: rgb(246, 248, 250);
   --theme-color-2: rgb(255, 255, 255);
   --theme-color-2-opacity: rgba(255, 255, 255, 0.95);
-  --text-color: rgb(0, 27, 63);
+  --text-color: rgb(31, 41, 55);
+  --text-color-sub: rgb(95, 101, 113);
   --line-scroll: rgb(0, 27, 63);
   --border-color: rgb(206, 200, 200);
+  --border-color-hover: rgb(10, 37, 64);
   --bg-toggle-theme: rgb(208, 208, 208);
   --radial-gradient-1: rgb(224, 224, 224);
   --radial-gradient-2: rgb(255, 255, 255);
@@ -24,9 +26,10 @@ body.dark {
   --theme-color-1: rgb(0, 3, 25);
   --theme-color-2: rgb(28, 33, 75);
   --theme-color-2-opacity: rgba(28, 33, 75, 0.95);
-  --border-color: rgb(86, 90, 116);
-  --border-color-hover: rgb(216, 124, 48);
-  --text-color: rgb(255, 255, 255);
+  --border-color: rgb(87, 91, 117);
+  --border-color-hover: rgb(255, 111, 97);
+  --text-color: rgb(243, 244, 246);
+  --text-color-sub: rgb(156, 163, 175);
   --line-scroll: rgb(255, 255, 255);
   --bg-toggle-theme: rgb(47, 47, 47);
   --radial-gradient-1: rgb(24, 29, 65);
@@ -36,9 +39,9 @@ body.dark {
 
 html,
 body {
-  @apply: font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  -webkit-font-smoothing: antialiased;
+  /* @apply: font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+  font-family: "Exo 2", sans-serif;
   @apply text-[14px] scroll-smooth box-border bg-[var(--theme-color-1)] bg-no-repeat bg-cover text-[var(--text-color)] w-full min-h-[100dvh];
 
   background: radial-gradient(

@@ -5,3 +5,9 @@
     rgba(255, 255, 255, 0)
   );
 }
+
+.grd:hover {
+  /* box-shadow: 0 0 5px 2px var(--border-color-hover) inset; */
+  box-shadow: 0 0 10px 0 var(--border-color-hover) inset,
+    0 0 10px 2px var(--border-color-hover);
+}
