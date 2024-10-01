@@ -12,7 +12,6 @@ body.light {
   --border-color: rgb(206, 200, 200);
   --border-color-hover: rgb(10, 37, 64);
   --bg-toggle-theme: rgb(208, 208, 208);
-  --var-gradiend: 40%;
 }
 
 body.dark {
@@ -25,11 +24,10 @@ body.dark {
   --text-color-sub: rgb(156, 163, 175);
   --line-scroll: rgb(255, 255, 255);
   --bg-toggle-theme: rgb(47, 47, 47);
-  --var-gradiend: 20%;
 }
 
 html {
-  background-color: black;
+  background: var(--theme-color-1);
   font-family: "Exo 2", sans-serif;
 }
 
@@ -37,11 +35,7 @@ body {
   opacity: 0;
   @apply text-[14px] scroll-smooth box-border
     bg-no-repeat bg-cover text-[var(--text-color)] w-full min-h-[100dvh];
-  background: radial-gradient(
-    ellipse at bottom,
-    var(--theme-color-1) var(--var-gradiend),
-    var(--theme-color-2)
-  );
+  background: var(--theme-color-1);
   animation: 1s ease-out 0.1s 1 transitionAnimation;
   animation-fill-mode: forwards;
 }

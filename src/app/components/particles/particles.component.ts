@@ -1,4 +1,4 @@
-import { Component, effect, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, NgZone, OnInit } from '@angular/core';
 import { tsParticles } from '@tsparticles/engine';
 import { loadTrianglesPreset } from '@tsparticles/preset-triangles';
 import { ToggleThemeService } from '../../services/toggle-theme.service';
@@ -14,22 +14,33 @@ import { PageEventService } from '../../services/page-event.service';
 export class ParticlesComponent implements OnInit {
   private readonly toggleThemeService = inject(ToggleThemeService);
   private readonly pageEventService = inject(PageEventService);
+  private readonly ngZone = inject(NgZone);
+
   particlesColorForDarkTheme = '#962828';
   particlesColorForLightTheme = '#0a2540';
 
   constructor() {
-    effect(() => {
-      this.toggleThemeService.$isDarkTheme();
-      this.pageEventService.$windowInnerWidth();
-      this.load();
+    this.ngZone.runOutsideAngular(() => {
+      effect(() => {
+        this.toggleThemeService.$isDarkTheme();
+        this.pageEventService.$windowInnerWidth();
+        this.load();
+      });
     });
   }
 
   ngOnInit(): void {
-    this.load();
+    this.ngZone.runOutsideAngular(() => {
+      this.load();
+    });
   }
 
   async load() {
+    const particlesNumber =
+      this.pageEventService.$windowInnerWidth() / 25 < 100
+        ? this.pageEventService.$windowInnerWidth() / 25
+        : 100;
+
     const themeParticle = this.toggleThemeService.$isDarkTheme()
       ? this.particlesColorForDarkTheme
       : this.particlesColorForLightTheme;
@@ -61,7 +72,7 @@ export class ParticlesComponent implements OnInit {
             speed: { min: 1, max: 2 },
           },
           number: {
-            value: this.pageEventService.$windowInnerWidth() / 25,
+            value: particlesNumber,
           },
           opacity: {
             value: { min: 0.2, max: 0.8 },
