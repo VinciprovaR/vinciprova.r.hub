@@ -10,20 +10,25 @@ export interface SocialMap {
 }
 
 const socialMap: SocialMap = {
-  linkedin: {
+  a_linkedin: {
     href: 'https://www.linkedin.com/in/riccardo-vinciprova-567703100/',
     icon: 'linkedin',
     title: 'LinkedIn',
   },
-  github: {
+  b_github: {
     href: 'https://github.com/VinciprovaR',
     icon: 'github',
     title: 'GitHub',
   },
-  instagram: {
+  c_instagram: {
     href: 'https://www.instagram.com/rick_uroboros/',
     icon: 'instagram',
     title: 'Instagram',
+  },
+  d_movieTvBookmark: {
+    href: 'https://movie-tv-bookmark.netlify.app/home',
+    icon: 'a',
+    title: 'Project: Movie \u0026 TV Bookmark',
   },
 };
 
