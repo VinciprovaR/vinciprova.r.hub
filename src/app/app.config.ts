@@ -20,11 +20,6 @@ const socialMap: SocialMap = {
     icon: 'github',
     title: 'GitHub',
   },
-  c_instagram: {
-    href: 'https://www.instagram.com/rick_uroboros/',
-    icon: 'instagram',
-    title: 'Instagram',
-  },
   d_movieTvBookmark: {
     href: 'https://movie-tv-bookmark.netlify.app/home',
     icon: 'a',
